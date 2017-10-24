@@ -3,20 +3,22 @@ import { connect } from "redux-zero/react";
 import logo from './logo.svg';
 import './App.css';
 
-const Option = ({ index, option, model }) => {
-  const onOptionSelect = (e) => {
-    console.log('value: ', option);
-    model.setAnswerAt(option, index);
-  };
-
-  return (
-    <div>
-      <div className="options">
-        <button onClick={onOptionSelect} >
-          <span> {String.fromCharCode(65 + index)} </span>
-          {option} </button>
+const Option = ({ index, quiz }) => {
+  return quiz.map((index, value) => {
+    return (
+      <div>
+        <div className="options">
+          <button>{value.options}</button>
+        </div>
       </div>
-    </div>);
+    )
+  })
+};
+
+const OptionsList = (quiz,index)
+  const onOptionSelect = (e) => {
+    let value = e.target.id;
+    answere(value,index);
 };
 
 const TriviaApp = ({ title, model }) => {
@@ -47,7 +49,7 @@ const TriviaApp = ({ title, model }) => {
   } else {
 
     yourAnswers = (
-      <div className= "finish">
+      <div className="finish">
         <h2>  Here are your answers: </h2>
         <ol>
           {
@@ -62,7 +64,7 @@ const TriviaApp = ({ title, model }) => {
 
 
   return (
-    <div className= "count">
+    <div className="count">
       <img src={'img/' + model.getImage()} />
       <div className="afterImg">
         <p>  {model.getQuestion()}  </p>
@@ -108,7 +110,7 @@ const TriviaApp = ({ title, model }) => {
   } else {
 
     yourAnswers = (
-      <div className= "finish">
+      <div className="finish">
         <h2>  Here are your answers: </h2>
         <ol>
           {
@@ -123,7 +125,7 @@ const TriviaApp = ({ title, model }) => {
 
 
   return (
-    <div className= "count">
+    <div className="count">
       <img src={'img/' + model.getImage()} />
       <div className="afterImg">
         <p>  {model.getQuestion()}  </p>
@@ -141,6 +143,6 @@ const TriviaApp = ({ title, model }) => {
   );
 }
 
-const mapToProps = ({players, selectedPlayerIndex}) => ({players, selectedPlayerIndex});
+const mapToProps = ({ players, selectedPlayerIndex }) => ({ players, selectedPlayerIndex });
 
 export default connect(mapToProps)(App);
