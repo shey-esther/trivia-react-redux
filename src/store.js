@@ -12,7 +12,7 @@ let   QUESTIONS = [
     index: 0
 	},
 	{
-    image: "https://ihatetomatoes.net/react-tutorials/abc-quiz/images/ship.svg",
+    images: "https://ihatetomatoes.net/react-tutorials/abc-quiz/images/ship.svg",
     questions: "Which is the oldest airline in the world?",
     options: ["Avianca", "KLM", "Qantas"],
     correctAnswers: "KLM",
@@ -20,7 +20,7 @@ let   QUESTIONS = [
     index: 0
 	},
 	{
-    image: "https://ihatetomatoes.net/react-tutorials/abc-quiz/images/bycicle.svg",
+    images: "https://ihatetomatoes.net/react-tutorials/abc-quiz/images/bycicle.svg",
     questions: "Which is the oldest airline in the world?",
     options: ["Avianca", "KLM", "Qantas"],
     correctAnswers: "KLM",
