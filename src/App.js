@@ -15,12 +15,22 @@ const Option = ({ index, quiz }) => {
   })
 };
 
-const OptionsList = (quiz,index)
+const OptionsList = ({ quiz, index }) => {
   const onOptionSelect = (e) => {
-    let value = e.target.id;
-    answere(value,index);
-};
-
+    let value = e.target.val;
+    answere(value, index);
+  };
+  const optionsAnswere = quiz[index].options.map((value, index) => {
+    return (
+      <li key={index}>
+        <button onClick={onOptionSelect} val={value}>{value}</button>
+      </li>
+    )
+  });
+  return (
+    <ul>{optionsAnswere}</ul>
+  )
+}
 const TriviaApp = ({ title, model }) => {
   let optionList = '';
   let yourAnswers = '';
