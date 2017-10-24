@@ -1,0 +1,100 @@
+body{
+    background-image: url(img/fondo3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.count{
+    background-color: rgb(230, 214, 222);
+    color: #170f44;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+#container {
+    margin: 3%;
+    height: 700px;
+    padding: 5%;
+    border-radius: 10px;
+    border: 2px solid palevioletred;
+    background-color: rgba(220, 117, 151, 0.7);
+}
+
+img {
+    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-left: 40%;
+}
+/* itulos o preguntas */
+
+p {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    font-size: 30px;
+    text-align: center;
+}
+
+.afterImg {
+    background-color: rgba(239, 249, 249, 0.66);
+    color: #170f44;
+    padding-top: 1px;
+    padding-bottom: 20px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.options {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+span {
+    background-color: #121229;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    font-weight: 900;
+    /* text-align: center; */
+    margin: 2%;
+}
+
+/* button {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 900;
+    background-color: #9e5379;
+    width: 65%;
+} */
+button {
+    margin: 0% 2% 0% 2%;
+    color: #4b4668;
+    font-weight: 900;
+    border-radius: 5px;
+    border: 1px solid #4b4668;
+    padding: 6px 14px 6px 14px;
+    width: 60%;
+    margin-left: 20%;
+    text-align: left;
+}
+.finish{
+    margin-left: 10%;
+}
+
+.finish h2{
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.finish button{
+    width: 50%;
+    background-color: palevioletred;
+    text-align: center;
+}
+
+
+
+
+
+/* <div className="progress-bar bg-success" role="progressbar" style="width: ${app.incremento}%; height: 5px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>\ */
+/* <i className="fa fa-twitter-square fbook" style="font-size:48px;color:#00bbff"></i>
+<i className="fa fa-google-plus-circle" style="font-size:48px;color:red"></i>
+<i className="fa fa-facebook-square fbook" style="font-size:48px;color:blue;border-radius:50%"></i> */
