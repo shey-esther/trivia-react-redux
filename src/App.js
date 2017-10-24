@@ -1,45 +1,7 @@
-const porcentaje = 20;
-
-class Model {
-  constructor() {
-    this.images = ["plane.svg", "barco.svg", "bicicle.svg", "carro.svg", "auto.svg",];
-    this.index = 0;
-    this.questions = ["Which is the oldest airline in the world?", "Which is the largest port in the world?", "What is the longest distance cycling backwards?", "What is the highest speed ever reached by a school bus?", "What is the longest car trip on one tank of gas?"];
-    this.correctAnswers = ["KLM", "Port of Shanghai", "337.60 km", "590 km/h", "2617 km"];
-    this.answers = [];
-    this.options = [["Avianca", "KLM", "Qantas"],
-    ["Port of Shanghai", "Port of Singapore", "Port of Rotterdam"],
-    ["89.30 km", "675.10 km", "337.60 km"],
-    ["590 km/h", "320 km/h", "245 km/h"],
-    ["2617 km", "3568 km", "1732 km"]];
-    this.callback = null;
-  }
-
-  subscribe(render) {
-    this.callback = render;
-  }
-
-  notify() {
-    this.callback();
-  }
-  getQuestion() {
-    return this.questions[this.index];
-  }
-
-  getImage() {
-    return this.images[this.index];
-  }
-
-  getOptions() {
-    return this.options[this.index];
-  }
-
-  setAnswerAt(option, index) {
-    this.answers.push(option);
-    this.index++;
-    this.notify();
-  }
-}
+import React, { Component } from 'react';
+import { connect } from "redux-zero/react";
+import logo from './logo.svg';
+import './App.css';
 
 const Option = ({ index, option, model }) => {
   const onOptionSelect = (e) => {
@@ -118,18 +80,67 @@ const TriviaApp = ({ title, model }) => {
   );
 }
 
+const TriviaApp = ({ title, model }) => {
+  let optionList = '';
+  let yourAnswers = '';
+  const onSubmit = () => {
+    console.log('onSubmit');
+    // model.getReport () ;
+  }
+  const genReport = () => {
+    let result = [];
+    for (let i = 0; i < model.correctAnswers.length; i++) {
+      let rpta = '';
+      if (model.correctAnswers[i] === model.answers[i]) {
+        rpta = <div>{model.questions[i]} {model.answers[i]}</div>;
+      }
+      else {
+        rpta = <div>{model.questions[i]}  <strike>{model.answers[i]} </strike> - {model.correctAnswers[i]}</div>;
+      }
+      result.push(rpta);
+    }
+    return result;
+  }
+  if (model.getOptions()) {
+    optionList = model.getOptions().map((option, index) => {
+      return (<Option key={index} model={model} index={index} option={option} />);
+    })
+  } else {
 
-let model = new Model();
-let counter = 1;
+    yourAnswers = (
+      <div className= "finish">
+        <h2>  Here are your answers: </h2>
+        <ol>
+          {
+            genReport().map((question, index) => <li key={index}> {question}  {model.answers[index]} </li>)
+          }
+        </ol>
+        <button onClick={onSubmit}>submit</button>
+      </div>
+    );
+  }
 
-let render = () => {
-  console.log('render times: ', counter++);
-  ReactDOM.render(
-    <TriviaApp title="TodoApp" model={model} />,
-    document.getElementById('container')
+
+
+  return (
+    <div className= "count">
+      <img src={'img/' + model.getImage()} />
+      <div className="afterImg">
+        <p>  {model.getQuestion()}  </p>
+        <div>
+          {
+            optionList
+          }
+          {
+            yourAnswers
+          }
+
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
-model.subscribe(render);
+const mapToProps = ({players, selectedPlayerIndex}) => ({players, selectedPlayerIndex});
 
-render(); 
+export default connect(mapToProps)(App);
